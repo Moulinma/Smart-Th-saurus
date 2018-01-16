@@ -9,7 +9,7 @@ namespace Smart_Th_saurus
 {
     class HTMLLinkFinder
     {
-        public void Finder(string URL)
+        public void Finder(TXTCreating txt, string URL)
         {
             char chrOne = ' ';
             char chrTwo = ' ';
@@ -18,7 +18,6 @@ namespace Smart_Th_saurus
             string Link = @"";
             bool takeCar = false;
             int chrRemaining = 0;
-            TXTCreating txt = new TXTCreating();
             string HTML = txt.TakeHTML(URL);
             for (int x = 0; x < HTML.Length; ++x)
             {

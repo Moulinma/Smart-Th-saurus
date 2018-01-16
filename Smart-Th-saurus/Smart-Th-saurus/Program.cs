@@ -10,9 +10,10 @@ namespace Smart_Th_saurus
     {
         static void Main(string[] args)
         {
+            TXTCreating txt = new TXTCreating();
             string URL = "https://www.etml.ch/";
-            HTMLLinkFinder linkFinder = new HTMLLinkFinder();
-            linkFinder.Finder(URL);
+            HTMLTxtAnalyser Analyser = new HTMLTxtAnalyser();
+            Analyser.WordSearching(txt, URL);
             Console.ReadLine();
         }
     }
