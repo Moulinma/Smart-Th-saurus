@@ -1,0 +1,6 @@
+C:\Users\briandgr\Desktop\Smart-Th-saurus\Smart-Th-saurus\Smart-Th-saurus\bin\Debug\Smart-Th-saurus.exe.config
+C:\Users\briandgr\Desktop\Smart-Th-saurus\Smart-Th-saurus\Smart-Th-saurus\bin\Debug\Smart-Th-saurus.exe
+C:\Users\briandgr\Desktop\Smart-Th-saurus\Smart-Th-saurus\Smart-Th-saurus\bin\Debug\Smart-Th-saurus.pdb
+C:\Users\briandgr\Desktop\Smart-Th-saurus\Smart-Th-saurus\Smart-Th-saurus\obj\Debug\Smart-Th-saurus.csprojResolveAssemblyReference.cache
+C:\Users\briandgr\Desktop\Smart-Th-saurus\Smart-Th-saurus\Smart-Th-saurus\obj\Debug\Smart-Th-saurus.exe
+C:\Users\briandgr\Desktop\Smart-Th-saurus\Smart-Th-saurus\Smart-Th-saurus\obj\Debug\Smart-Th-saurus.pdb
