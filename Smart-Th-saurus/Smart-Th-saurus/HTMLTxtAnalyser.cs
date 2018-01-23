@@ -8,7 +8,7 @@ namespace Smart_Th_saurus
 {
     class HTMLTxtAnalyser
     {
-        public string WordSearching(TXTCreating txt, string URL)
+        public string WordSearching(TXTCreating Creator, string URL)
         {
             char chrOne = ' ';
             char chrTwo = ' ';
@@ -20,7 +20,7 @@ namespace Smart_Th_saurus
             bool takeChr = false;
             bool scripted = false;
             string word = "";
-            string HTML = txt.TakeHTML(URL);
+            string HTML = Creator.TakeHTML(URL);
             for(int x = 0; x < HTML.Length; ++x)
             {
                 char currentChr = Convert.ToChar(HTML.Substring(x, 1));

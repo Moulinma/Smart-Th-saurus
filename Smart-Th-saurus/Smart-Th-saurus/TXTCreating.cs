@@ -13,8 +13,7 @@ namespace Smart_Th_saurus
         WebClient client = new WebClient();
         public TXTCreating()
         {
-            //TODO Find a way to create a folder
-            //Directory.CreateDirectory(@"C:\Users\%username%\Desktop\TXTResult");
+            //Trouver un moyen de créer un dossier si il n'existe pas
         }
 
         public string TakeHTML(string URL)
@@ -23,23 +22,33 @@ namespace Smart_Th_saurus
             return codeHTML;
         }
 
-        public void CreateTXT(string listWord)
+        public void CreateTXT(List<string> lstWords)
         {
             string currentString;
-            for (int x = 0; x < listWord.Length - 1; ++x)
+            bool WaitChar = false;
+            foreach(string listWord in lstWords)
             {
-                currentString = listWord.Substring(x, 2);
-                if (currentString == "\n")
+                //TODO Trouver un moyen de créer un txt
+                for (int x = 0; x < listWord.Length - 1; ++x)
                 {
-                    //TODO mettre les mots à la ligne
-                }
-                else if (currentString.Substring(1, 1) == @"\")
-                {
-                    //TODO ne rajouter que le premier caractère
-                }
-                else
-                {
-                    //TODO rajouter le string
+                    currentString = listWord.Substring(x, 2);
+                    if (currentString == "\n")
+                    {
+                        WaitChar = true;
+                        //TODO mettre les mots à la ligne
+                    }
+                    else if (x == listWord.Length - 2 && !WaitChar)
+                    {
+                        //TODO rajoute le string entier
+                    }
+                    else if (!WaitChar)
+                    {
+                        //TODO rajouter seulement le premier caractère du string
+                    }
+                    else
+                    {
+                        WaitChar = false;
+                    }
                 }
             }
         }

@@ -9,7 +9,42 @@ namespace Smart_Th_saurus
 {
     class HTMLLinkFinder
     {
-        public void Finder(TXTCreating txt, string URL)
+        public List<string> Finder(TXTCreating Creator, string URL)
+        {
+            List<string> lstLinks = new List<string>();
+            string strLinks;
+            string tempLink = "";
+            string currentString;
+            bool TempWait = false;
+            strLinks = FindLinks(Creator, URL);
+            for (int x = 0; x < strLinks.Length - 1; ++x)
+            {
+                currentString = strLinks.Substring(x, 2);
+                if (currentString == "\n")
+                {
+                    TempWait = true;
+                    lstLinks.Add(tempLink);
+                }
+                else if (x == strLinks.Length - 2 && !TempWait)
+                {
+                    if (!TempWait)
+                    {
+                        tempLink += currentString;
+                    }
+                    lstLinks.Add(tempLink);
+                }
+                else if(!TempWait)
+                {
+                    tempLink += currentString.Substring(1, 1);
+                }
+                else
+                {
+                    TempWait = false;
+                }
+            }
+            return lstLinks;
+        }
+        public string FindLinks(TXTCreating Creator, string URL)
         {
             char chrOne = ' ';
             char chrTwo = ' ';
@@ -17,8 +52,9 @@ namespace Smart_Th_saurus
             char chrFour = ' ';
             string Link = @"";
             bool takeCar = false;
+            bool isLink = false;
             int chrRemaining = 0;
-            string HTML = txt.TakeHTML(URL);
+            string HTML = Creator.TakeHTML(URL);
             for (int x = 0; x < HTML.Length; ++x)
             {
                 chrOne = chrTwo;
@@ -26,29 +62,41 @@ namespace Smart_Th_saurus
                 chrThree = chrFour;
                 chrFour = Convert.ToChar(HTML.Substring(x, 1));
 
-                if(chrThree == '<' && chrFour == 'a')
+                if (chrFour == 'a' && chrThree == '<')
                 {
-                    takeCar = true;
-                    chrRemaining = 4;
+                    isLink = true;
                 }
-                if(chrOne == '<' && chrTwo == '/' && chrThree == 'a' && chrFour == '>')
+                else if(chrOne == '<' && chrTwo == '/' && chrThree == 'a' && chrFour == '>')
                 {
-                    takeCar = false;
-                    Console.WriteLine(Link);
-                    Link = "";
+                    isLink = false;
                 }
-                if (takeCar)
+
+                if (isLink)
                 {
-                    if(chrRemaining == 0)
+                    if (chrOne == 'h' && chrTwo == 'r' && chrThree == 'e' && chrFour == 'f')
                     {
-                        Link += chrOne;
+                        takeCar = true;
+                        chrRemaining = 2;
                     }
-                    else
+                    else if (chrFour == '"' && chrRemaining == 0 && takeCar)
                     {
-                        --chrRemaining;
+                        takeCar = false;
+                        Link += "\n";
+                    }
+                    else if (takeCar)
+                    {
+                        if (chrRemaining != 0)
+                        {
+                            chrRemaining--;
+                        }
+                        else
+                        {
+                            Link += chrFour;
+                        }
                     }
                 }
             }
+            return Link;
         }
     }
 }
