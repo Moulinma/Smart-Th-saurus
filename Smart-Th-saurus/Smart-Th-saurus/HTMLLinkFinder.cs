@@ -34,7 +34,7 @@ namespace Smart_Th_saurus
                 if(chrOne == '<' && chrTwo == '/' && chrThree == 'a' && chrFour == '>')
                 {
                     takeCar = false;
-                    Console.WriteLine(Link + "\n\n");
+                    Console.WriteLine(Link);
                     Link = "";
                 }
                 if (takeCar)

@@ -23,9 +23,25 @@ namespace Smart_Th_saurus
             return codeHTML;
         }
 
-        public void CreateTXT(string URL)
+        public void CreateTXT(string listWord)
         {
-            //TODO Find a way to create a txt
+            string currentString;
+            for (int x = 0; x < listWord.Length - 1; ++x)
+            {
+                currentString = listWord.Substring(x, 2);
+                if (currentString == "\n")
+                {
+                    //TODO mettre les mots à la ligne
+                }
+                else if (currentString.Substring(1, 1) == @"\")
+                {
+                    //TODO ne rajouter que le premier caractère
+                }
+                else
+                {
+                    //TODO rajouter le string
+                }
+            }
         }
     }
 }

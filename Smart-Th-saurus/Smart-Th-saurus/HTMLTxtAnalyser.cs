@@ -8,29 +8,68 @@ namespace Smart_Th_saurus
 {
     class HTMLTxtAnalyser
     {
-        public void WordSearching(TXTCreating txt, string URL)
+        public string WordSearching(TXTCreating txt, string URL)
         {
+            char chrOne = ' ';
+            char chrTwo = ' ';
+            char chrThree = ' ';
+            char chrFour = ' ';
+            char chrFive = ' ';
+            char chrSix = ' ';
+            char chrSeven = ' ';
             bool takeChr = false;
+            bool scripted = false;
             string word = "";
             string HTML = txt.TakeHTML(URL);
             for(int x = 0; x < HTML.Length; ++x)
             {
                 char currentChr = Convert.ToChar(HTML.Substring(x, 1));
-                if(currentChr == '>')
+
+                chrOne = chrTwo;
+                chrTwo = chrThree;
+                chrThree = chrFour;
+                chrFour = chrFive;
+                chrFive = chrSix;
+                chrSix = chrSeven;
+                chrSeven = currentChr;
+                if (chrTwo == 's' && chrThree == 'c' && chrFour == 'r' && chrFive == 'i' && chrSix == 'p' && chrSeven == 't')
+                {
+                    scripted = IsScript(chrOne);
+                }
+                
+                if (currentChr == '>')
                 {
                     takeChr = true;
                 }
-                else if(currentChr == '<')
+                else if(currentChr == '<' && takeChr)
                 {
                     takeChr = false;
-                    word += "\n";
                 }
-                else if (takeChr)
+                else if (takeChr && !scripted)
                 {
-                    word += currentChr;
+                    if(currentChr == ' ')
+                    {
+                        word += "\n";
+                    }
+                    else
+                    {
+                        word += currentChr;
+                    }
                 }
             }
-            Console.WriteLine(word);
+            return word;
+        }
+
+        private bool IsScript(char chrOne)
+        {
+            if (chrOne == '/')
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
