@@ -50,7 +50,7 @@ namespace Smart_Th_saurus
             char chrTwo = ' ';
             char chrThree = ' ';
             char chrFour = ' ';
-            string Link = @"";
+            string Link = "";
             bool takeCar = false;
             bool isLink = false;
             int chrRemaining = 0;

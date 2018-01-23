@@ -18,7 +18,9 @@ namespace Smart_Th_saurus
 
             //Recherche de liens présents sur le site
             HTMLLinkFinder Finder = new HTMLLinkFinder();
-            lstLinks = Finder.Finder(Creator, URL);
+            //TODO Régler le problème des liens qui ne se séparent pas du string de base (list avec un seul élement)
+            //lstLinks = Finder.Finder(Creator, URL);
+            lstLinks.Add(URL);
             
             //Recherche des mots
             foreach(string link in lstLinks)
