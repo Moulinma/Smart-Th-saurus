@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Smart_Th_saurus
@@ -22,7 +23,10 @@ namespace Smart_Th_saurus
             List<string> lstWords = new List<string>();
             string word = "";
             string HTML = Creator.TakeHTML(URL);
-            for(int x = 0; x < HTML.Length; ++x)
+            HTML = Regex.Replace(HTML, @"\n", " ");
+            HTML = Regex.Replace(HTML, @"\r", " ");
+            HTML = Regex.Replace(HTML, @"\t", " ");
+            for (int x = 0; x < HTML.Length; ++x)
             {
                 char currentChr = Convert.ToChar(HTML.Substring(x, 1));
 
@@ -50,8 +54,11 @@ namespace Smart_Th_saurus
                 {
                     if(currentChr == ' ')
                     {
-                        lstWords.Add(word);
-                        word = "";
+                        if(word != "")
+                        {
+                            lstWords.Add(word);
+                            word = "";
+                        }
                     }
                     else
                     {
