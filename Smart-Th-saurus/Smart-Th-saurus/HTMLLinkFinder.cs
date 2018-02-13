@@ -11,46 +11,12 @@ namespace Smart_Th_saurus
     {
         public List<string> Finder(TXTCreating Creator, string URL)
         {
-            List<string> lstLinks = new List<string>();
-            string strLinks;
-            string tempLink = "";
-            string currentString;
-            bool TempWait = false;
-            strLinks = FindLinks(Creator, URL);
-            for (int x = 0; x < strLinks.Length - 1; ++x)
-            {
-                currentString = strLinks.Substring(x, 2);
-                if (currentString == "\n")
-                {
-                    TempWait = true;
-                    lstLinks.Add(tempLink);
-                }
-                else if (x == strLinks.Length - 2 && !TempWait)
-                {
-                    if (!TempWait)
-                    {
-                        tempLink += currentString;
-                    }
-                    lstLinks.Add(tempLink);
-                }
-                else if(!TempWait)
-                {
-                    tempLink += currentString.Substring(1, 1);
-                }
-                else
-                {
-                    TempWait = false;
-                }
-            }
-            return lstLinks;
-        }
-        public string FindLinks(TXTCreating Creator, string URL)
-        {
             char chrOne = ' ';
             char chrTwo = ' ';
             char chrThree = ' ';
             char chrFour = ' ';
             string Link = "";
+            List<string> lstLinks = new List<string>();
             bool takeCar = false;
             bool isLink = false;
             int chrRemaining = 0;
@@ -66,7 +32,7 @@ namespace Smart_Th_saurus
                 {
                     isLink = true;
                 }
-                else if(chrOne == '<' && chrTwo == '/' && chrThree == 'a' && chrFour == '>')
+                else if (chrOne == '<' && chrTwo == '/' && chrThree == 'a' && chrFour == '>')
                 {
                     isLink = false;
                 }
@@ -81,7 +47,8 @@ namespace Smart_Th_saurus
                     else if (chrFour == '"' && chrRemaining == 0 && takeCar)
                     {
                         takeCar = false;
-                        Link += "\n";
+                        lstLinks.Add(Link);
+                        Link = "";
                     }
                     else if (takeCar)
                     {
@@ -96,7 +63,7 @@ namespace Smart_Th_saurus
                     }
                 }
             }
-            return Link;
+            return lstLinks;
         }
     }
 }

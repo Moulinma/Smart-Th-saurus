@@ -11,36 +11,45 @@ namespace Smart_Th_saurus
         static void Main(string[] args)
         {
             string URL = "https://www.etml.ch/";
-            List<string> TempWordLst = new List<string>();
+            List<List<string>> TempWordLst = new List<List<string>>();
             List<string> lstLinks = new List<string>();
             TXTCreating Creator = new TXTCreating();
             HTMLTxtAnalyser Analyser = new HTMLTxtAnalyser();
 
             //Recherche de liens présents sur le site
             HTMLLinkFinder Finder = new HTMLLinkFinder();
-            //TODO Régler le problème des liens qui ne se séparent pas du string de base (list avec un seul élement)
-            //lstLinks = Finder.Finder(Creator, URL);
+            lstLinks = Finder.Finder(Creator, URL);
             lstLinks.Add(URL);
             
             //Recherche des mots
             foreach(string link in lstLinks)
             {
-                link.Replace("\n", "");
-                if (link.Substring(0, 1) == "/")
+                //TODO Gérer les exceptions
+                if(link != "/lecole-2/presentation.html")
                 {
-                    TempWordLst.Add(Analyser.WordSearching(Creator, URL + link.Substring(1, link.Length - 1)));
-                }
-                else
-                {
-                    TempWordLst.Add(Analyser.WordSearching(Creator, link));
+                    if(link.Substring(0,1) == "#") { }
+                    else if (link.Substring(0, 1) == "/")
+                    {
+                        TempWordLst.Add(Analyser.WordSearching(Creator, URL + link.Substring(1, link.Length - 1)));
+                    }
+                    else if (link == URL)
+                    {
+                        TempWordLst.Add(Analyser.WordSearching(Creator, link));
+                    }
                 }
             }
 
-            foreach(string element in TempWordLst)
+            int Test = 0;
+            foreach(List<string> lstWords in TempWordLst)
             {
-                Console.WriteLine(element);
+                foreach(string word in lstWords)
+                {
+                    Console.WriteLine(word);
+                }
+                Console.WriteLine("--------------------------------------------");
+                Test++;
             }
-
+            Console.Write(Test);
             //Création du Texte
             //Creator.CreateTXT(TempWordLst);
 
