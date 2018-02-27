@@ -1,29 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Threading;
 
 namespace Smart_Th_saurus
 {
+    /// <summary>
+    /// Class to take HTML and create the TXT db
+    /// </summary>
     class TXTCreating
     {
+        //Object
         WebClient client = new WebClient();
+
+        /// <summary>
+        /// Method that create a folder to db
+        /// </summary>
         public TXTCreating()
         {
-            //Trouver un moyen de créer un dossier si il n'existe pas
+            //Find a way to create a folder if not exist
         }
 
+        /// <summary>
+        /// Method that take the HTML of a page
+        /// </summary>
+        /// <param name="URL">The link of the page to take the HTML of</param>
+        /// <returns>Returns the HTML of the page</returns>
         public string TakeHTML(string URL)
         {
             string codeHTML = client.DownloadString(URL);
             return codeHTML;
         }
 
+        /// <summary>
+        /// Method that create the txt files and fill them with the words of the pages
+        /// </summary>
+        /// <param name="Name">Name of the link that has been analysed</param>
+        /// <param name="lstWords">List of the words of the page</param>
         public void CreateTXT(string Name, List<string> lstWords)
         {
             Name = Regex.Replace(Name, @"/", "_");

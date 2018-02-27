@@ -41,14 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HTMLLinkFinder.cs" />
-    <Compile Include="HTMLTxtAnalyser.cs" />
+    <Compile Include="Finder.cs" />
+    <Compile Include="Find\HTMLLinkFinder.cs" />
+    <Compile Include="Find\HTMLTxtAnalyser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TXTCreating.cs" />
+    <Compile Include="Seeker.cs" />
+    <Compile Include="Find\TXTCreating.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Seek\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
