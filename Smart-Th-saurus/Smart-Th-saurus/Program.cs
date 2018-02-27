@@ -17,9 +17,10 @@ namespace Smart_Th_saurus
                 "1. Website Analyse\n" +
                 "2. Word Research\n" +
                 "3. Exit\n");
+            Console.ReadLine();
             //TODO When User press a key analyse it
-            bool x = false;
-            bool y = true;
+            bool x = true;
+            bool y = false;
             bool z = false;
 
             //Execute if User wants to analyse a website
@@ -33,6 +34,7 @@ namespace Smart_Th_saurus
                 Finder finder = new Finder();
                 finder.Start(URL);
                 Console.WriteLine("\n\nWebsite analysed!!!");
+                Console.ReadLine();
             }
 
             //Execute if User wants to research a word

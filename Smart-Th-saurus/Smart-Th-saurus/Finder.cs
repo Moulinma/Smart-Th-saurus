@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Smart_Th_saurus
@@ -27,8 +28,10 @@ namespace Smart_Th_saurus
             lstLinks.Add(URL);
 
             //Search of words
+            int Analysed = 0;
             foreach (string link in lstLinks)
             {
+                
                 //TODO Control exceptions
                 if (link != "/lecole-2/presentation.html" && link.Substring(0, 1) != "#")
                 {
@@ -43,6 +46,9 @@ namespace Smart_Th_saurus
                         lstLinksName.Add("Base");
                     }
                 }
+                Analysed++;
+                Console.SetCursorPosition(0, 4);
+                Console.WriteLine("Analysed " + Analysed*100/lstLinks.Count + "%");
             }
 
             //TEST WRITE CONSOLE
@@ -56,9 +62,13 @@ namespace Smart_Th_saurus
             //}
 
             //Text creation
+            int Created = 0;
             for (int x = 0; x < lstLinksName.Count(); ++x)
             {
                 Creator.CreateTXT(lstLinksName[x], TempWordLst[x]);
+                Created++;
+                Console.SetCursorPosition(0, 5);
+                Console.WriteLine("Created " + Created * 100 / lstLinksName.Count + "%");
             }
         }
     }
