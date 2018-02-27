@@ -32,49 +32,57 @@ namespace Smart_Th_saurus
             //Taking HTML
             string HTML = Creator.TakeHTML(URL);
 
-            //Loop to search for links
-            for (int x = 0; x < HTML.Length; ++x)
+            if(HTML != null)
             {
-                chrOne = chrTwo;
-                chrTwo = chrThree;
-                chrThree = chrFour;
-                chrFour = Convert.ToChar(HTML.Substring(x, 1));
+                //Loop to search for links
+                for (int x = 0; x < HTML.Length; ++x)
+                {
+                    chrOne = chrTwo;
+                    chrTwo = chrThree;
+                    chrThree = chrFour;
+                    chrFour = Convert.ToChar(HTML.Substring(x, 1));
 
-                if (chrFour == 'a' && chrThree == '<')
-                {
-                    isLink = true;
-                }
-                else if (chrOne == '<' && chrTwo == '/' && chrThree == 'a' && chrFour == '>')
-                {
-                    isLink = false;
-                }
+                    if (chrFour == 'a' && chrThree == '<')
+                    {
+                        isLink = true;
+                    }
+                    else if (chrOne == '<' && chrTwo == '/' && chrThree == 'a' && chrFour == '>')
+                    {
+                        isLink = false;
+                    }
 
-                if (isLink)
-                {
-                    if (chrOne == 'h' && chrTwo == 'r' && chrThree == 'e' && chrFour == 'f')
+                    if (isLink)
                     {
-                        takeCar = true;
-                        chrRemaining = 2;
-                    }
-                    else if (chrFour == '"' && chrRemaining == 0 && takeCar)
-                    {
-                        takeCar = false;
-                        lstLinks.Add(Link);
-                        Link = "";
-                    }
-                    else if (takeCar)
-                    {
-                        if (chrRemaining != 0)
+                        if (chrOne == 'h' && chrTwo == 'r' && chrThree == 'e' && chrFour == 'f')
                         {
-                            chrRemaining--;
+                            takeCar = true;
+                            chrRemaining = 2;
                         }
-                        else
+                        else if (chrFour == '"' && chrRemaining == 0 && takeCar)
                         {
-                            Link += chrFour;
+                            takeCar = false;
+                            lstLinks.Add(Link);
+                            Link = "";
+                        }
+                        else if (takeCar)
+                        {
+                            if (chrRemaining != 0)
+                            {
+                                chrRemaining--;
+                            }
+                            else
+                            {
+                                Link += chrFour;
+                            }
                         }
                     }
                 }
             }
+            else
+            {
+                lstLinks = null;
+            }
+            
             return lstLinks;
         }
     }

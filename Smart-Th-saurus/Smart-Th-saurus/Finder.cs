@@ -30,10 +30,25 @@ namespace Smart_Th_saurus
             //Verify the link of the website
             if (Creator.VerifyURL(URL))
             {
+                //TODO Recursive way fix
                 //Search of links on the website
                 HTMLLinkFinder Finder = new HTMLLinkFinder();
                 lstLinks = Finder.Finder(Creator, URL);
-                lstLinks.Add(URL);
+                foreach(string link in lstLinks)
+                {
+                    if (link.Substring(0, 1) == "/")
+                    {
+                        TempLst = Finder.Finder(Creator, link);
+                        if(TempLst != null)
+                        {
+                            lstLinks = lstLinks.Union(TempLst).ToList();
+                        }
+                    }
+                }
+                if(!lstLinks.Contains(URL))
+                {
+                    lstLinks.Add(URL);
+                }
 
                 //Search of words
                 foreach (string link in lstLinks)

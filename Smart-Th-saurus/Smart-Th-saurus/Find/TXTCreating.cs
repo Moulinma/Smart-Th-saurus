@@ -14,9 +14,6 @@ namespace Smart_Th_saurus
         //Variables
         string codeHTML;
 
-        //TODO REMOVE
-        int Test = 0;
-
         //Object
         WebClient client = new WebClient();
 
@@ -37,7 +34,12 @@ namespace Smart_Th_saurus
         {
             try
             {
-                codeHTML = client.DownloadString(URL);
+                //TODO "?" bug
+                if (URL.Contains("?"))
+                {
+                    URL = Regex.Replace(URL, @"?", @"\?");
+                    codeHTML = client.DownloadString(URL);
+                }
             }
             catch (WebException)
             {
@@ -86,7 +88,8 @@ namespace Smart_Th_saurus
             Name = Regex.Replace(Name, @"\?", "_");
             Name = Regex.Replace(Name, @"=", "_");
             string path = Name + ".txt";
-            
+
+            //TODO Too long TxtNames bug to fix
             FileStream stream = File.Create(path);
             StreamWriter t = new StreamWriter(stream);
             foreach (string word in lstWords)
