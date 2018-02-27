@@ -15,60 +15,62 @@ namespace Smart_Th_saurus
         /// <param name="URL">URL of the website to analyse</param>
         public void Start(string URL)
         {
+            //Variables
+            int Analysed = 0;
+            int Created = 0;
+
             //Objects
             List<List<string>> TempWordLst = new List<List<string>>();
             List<string> lstLinks = new List<string>();
             List<string> lstLinksName = new List<string>();
+            List<string> TempLst = new List<string>();
             TXTCreating Creator = new TXTCreating();
             HTMLTxtAnalyser Analyser = new HTMLTxtAnalyser();
 
-            //Search of links on the website
-            HTMLLinkFinder Finder = new HTMLLinkFinder();
-            lstLinks = Finder.Finder(Creator, URL);
-            lstLinks.Add(URL);
-
-            //Search of words
-            int Analysed = 0;
-            foreach (string link in lstLinks)
+            //Verify the link of the website
+            if (Creator.VerifyURL(URL))
             {
-                
-                //TODO Control exceptions
-                if (link != "/lecole-2/presentation.html" && link.Substring(0, 1) != "#")
+                //Search of links on the website
+                HTMLLinkFinder Finder = new HTMLLinkFinder();
+                lstLinks = Finder.Finder(Creator, URL);
+                lstLinks.Add(URL);
+
+                //Search of words
+                foreach (string link in lstLinks)
                 {
                     if (link.Substring(0, 1) == "/")
                     {
-                        TempWordLst.Add(Analyser.WordSearching(Creator, URL + link.Substring(1, link.Length - 1)));
-                        lstLinksName.Add(link.Substring(1, link.Length - 1));
+                        TempLst = Analyser.WordSearching(Creator, URL + link.Substring(1, link.Length - 1));
+                        if (TempLst != null)
+                        {
+                            TempWordLst.Add(TempLst);
+                            lstLinksName.Add(link.Substring(1, link.Length - 1));
+                        }
                     }
                     else if (link == URL)
                     {
-                        TempWordLst.Add(Analyser.WordSearching(Creator, link));
-                        lstLinksName.Add("Base");
+                        TempLst = Analyser.WordSearching(Creator, link);
+                        if (TempLst != null)
+                        {
+                            TempWordLst.Add(TempLst);
+                            lstLinksName.Add("Base");
+                        }
                     }
+                    Analysed++;
+                    Console.SetCursorPosition(0, 4);
+                    Console.WriteLine("Analysed " + Analysed * 100 / lstLinks.Count + "%");
                 }
-                Analysed++;
-                Console.SetCursorPosition(0, 4);
-                Console.WriteLine("Analysed " + Analysed*100/lstLinks.Count + "%");
-            }
 
-            //TEST WRITE CONSOLE
-            //foreach(List<string> lstWords in TempWordLst)
-            //{
-            //    foreach(string word in lstWords)
-            //    {
-            //        Console.WriteLine(word);
-            //    }
-            //    Console.WriteLine("--------------------------------------------");
-            //}
-
-            //Text creation
-            int Created = 0;
-            for (int x = 0; x < lstLinksName.Count(); ++x)
-            {
-                Creator.CreateTXT(lstLinksName[x], TempWordLst[x]);
-                Created++;
-                Console.SetCursorPosition(0, 5);
-                Console.WriteLine("Created " + Created * 100 / lstLinksName.Count + "%");
+                //Text creation
+                for (int x = 0; x < lstLinksName.Count(); ++x)
+                {
+                    Creator.CreateTXT(lstLinksName[x], TempWordLst[x]);
+                    Created++;
+                    Console.SetCursorPosition(0, 5);
+                    Console.WriteLine("Created " + Created * 100 / lstLinksName.Count + "%");
+                }
+                
+                Console.WriteLine("\n\nWebsite analysed!!!");
             }
         }
     }

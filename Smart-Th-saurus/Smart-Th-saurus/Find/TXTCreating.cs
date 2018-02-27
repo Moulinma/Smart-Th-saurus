@@ -2,6 +2,7 @@
 using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
+using System;
 
 namespace Smart_Th_saurus
 {
@@ -10,6 +11,12 @@ namespace Smart_Th_saurus
     /// </summary>
     class TXTCreating
     {
+        //Variables
+        string codeHTML;
+
+        //TODO REMOVE
+        int Test = 0;
+
         //Object
         WebClient client = new WebClient();
 
@@ -28,8 +35,44 @@ namespace Smart_Th_saurus
         /// <returns>Returns the HTML of the page</returns>
         public string TakeHTML(string URL)
         {
-            string codeHTML = client.DownloadString(URL);
+            try
+            {
+                codeHTML = client.DownloadString(URL);
+            }
+            catch (WebException)
+            {
+                return null;
+            }
             return codeHTML;
+        }
+
+        /// <summary>
+        /// Method that Verify if the website is accessible
+        /// </summary>
+        /// <param name="URL">The link of the website</param>
+        /// <returns>Returns if the website is accessible</returns>
+        public bool VerifyURL(string URL)
+        {
+            if(URL != "")
+            {
+                bool Test = true;
+                try
+                {
+                    codeHTML = client.DownloadString(URL);
+                }
+                catch (WebException)
+                {
+                    Console.WriteLine("The URL isn't valid");
+                    Test = false;
+                }
+                return Test;
+            }
+            else
+            {
+                Console.WriteLine("The URL isn't valid");
+                return false;
+            }
+            
         }
 
         /// <summary>
@@ -43,6 +86,7 @@ namespace Smart_Th_saurus
             Name = Regex.Replace(Name, @"\?", "_");
             Name = Regex.Replace(Name, @"=", "_");
             string path = Name + ".txt";
+            
             FileStream stream = File.Create(path);
             StreamWriter t = new StreamWriter(stream);
             foreach (string word in lstWords)

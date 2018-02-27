@@ -8,5 +8,9 @@ namespace Smart_Th_saurus
 {
     class Seeker
     {
+        public void Start()
+        {
+
+        }
     }
 }

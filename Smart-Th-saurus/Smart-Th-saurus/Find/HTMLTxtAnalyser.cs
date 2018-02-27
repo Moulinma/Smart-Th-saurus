@@ -34,50 +34,57 @@ namespace Smart_Th_saurus
 
             //Taking HTML and cleaning it
             string HTML = Creator.TakeHTML(URL);
-            HTML = Regex.Replace(HTML, @"\n", " ");
-            HTML = Regex.Replace(HTML, @"\r", " ");
-            HTML = Regex.Replace(HTML, @"\t", " ");
-
-            //Loop to search for words
-            for (int x = 0; x < HTML.Length; ++x)
+            if(HTML != null)
             {
-                char currentChr = Convert.ToChar(HTML.Substring(x, 1));
+                HTML = Regex.Replace(HTML, @"\n", " ");
+                HTML = Regex.Replace(HTML, @"\r", " ");
+                HTML = Regex.Replace(HTML, @"\t", " ");
 
-                chrOne = chrTwo;
-                chrTwo = chrThree;
-                chrThree = chrFour;
-                chrFour = chrFive;
-                chrFive = chrSix;
-                chrSix = chrSeven;
-                chrSeven = currentChr;
+                //Loop to search for words
+                for (int x = 0; x < HTML.Length; ++x)
+                {
+                    char currentChr = Convert.ToChar(HTML.Substring(x, 1));
 
-                if (chrTwo == 's' && chrThree == 'c' && chrFour == 'r' && chrFive == 'i' && chrSix == 'p' && chrSeven == 't')
-                {
-                    scripted = IsScript(chrOne);
-                }
-                if (currentChr == '>')
-                {
-                    takeChr = true;
-                }
-                else if(currentChr == '<' && takeChr)
-                {
-                    takeChr = false;
-                }
-                else if (takeChr && !scripted)
-                {
-                    if(currentChr == ' ')
+                    chrOne = chrTwo;
+                    chrTwo = chrThree;
+                    chrThree = chrFour;
+                    chrFour = chrFive;
+                    chrFive = chrSix;
+                    chrSix = chrSeven;
+                    chrSeven = currentChr;
+
+                    if (chrTwo == 's' && chrThree == 'c' && chrFour == 'r' && chrFive == 'i' && chrSix == 'p' && chrSeven == 't')
                     {
-                        if(word != "")
+                        scripted = IsScript(chrOne);
+                    }
+                    if (currentChr == '>')
+                    {
+                        takeChr = true;
+                    }
+                    else if (currentChr == '<' && takeChr)
+                    {
+                        takeChr = false;
+                    }
+                    else if (takeChr && !scripted)
+                    {
+                        if (currentChr == ' ')
                         {
-                            lstWords.Add(word);
-                            word = "";
+                            if (word != "")
+                            {
+                                lstWords.Add(word);
+                                word = "";
+                            }
+                        }
+                        else
+                        {
+                            word += currentChr;
                         }
                     }
-                    else
-                    {
-                        word += currentChr;
-                    }
                 }
+            }
+            else
+            {
+                lstWords = null;
             }
             return lstWords;
         }
