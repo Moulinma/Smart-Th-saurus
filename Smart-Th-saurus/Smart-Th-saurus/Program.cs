@@ -30,7 +30,6 @@ namespace Smart_Th_saurus
                 if (x)
                 {
                     Console.Clear();
-                    //TODO analyse all websites
                     Console.WriteLine("Enter the link of the website you want to analyse");
                     string URL = Console.ReadLine();
                     if (URL.Substring(URL.Length - 2, 1) != "/")

@@ -13,19 +13,18 @@ namespace Smart_Th_saurus
     {
         //Variables
         string codeHTML;
-
-        //TODO REMOVE
-        int Test = 0;
+        int nbrTooLong;
 
         //Object
         WebClient client = new WebClient();
+        string[] UrlTempArray = new string[2];
 
         /// <summary>
         /// Method that create a folder to db
         /// </summary>
         public TXTCreating()
         {
-            //Find a way to create a folder if not exist
+            //TODO Find a way to create a folder if not exist
         }
 
         /// <summary>
@@ -37,13 +36,18 @@ namespace Smart_Th_saurus
         {
             try
             {
+                if (URL.Contains("?"))
+                {
+                    UrlTempArray = URL.Split('?');
+                    URL = UrlTempArray[0];
+                }
                 codeHTML = client.DownloadString(URL);
+                return codeHTML;
             }
             catch (WebException)
             {
                 return null;
             }
-            return codeHTML;
         }
 
         /// <summary>
@@ -87,14 +91,28 @@ namespace Smart_Th_saurus
             Name = Regex.Replace(Name, @"=", "_");
             string path = Name + ".txt";
             
-            FileStream stream = File.Create(path);
-            StreamWriter t = new StreamWriter(stream);
-            foreach (string word in lstWords)
+            try
             {
-                t.WriteLine(word);
+                FileStream stream = File.Create(path); StreamWriter t = new StreamWriter(stream);
+                t.WriteLine(Name);
+                foreach (string word in lstWords)
+                {
+                    t.WriteLine(word);
+                }
+                t.Close();
+                stream.Close();
             }
-            t.Close();
-            stream.Close();
+            catch (System.IO.PathTooLongException)
+            {
+                FileStream stream = File.Create("TooLongName" + nbrTooLong++ + ".txt"); StreamWriter t = new StreamWriter(stream);
+                t.WriteLine(Name);
+                foreach (string word in lstWords)
+                {
+                    t.WriteLine(word);
+                }
+                t.Close();
+                stream.Close();
+            }
         }
     }
 }
