@@ -30,7 +30,6 @@ namespace Smart_Th_saurus
             //Verify the link of the website
             if (Creator.VerifyURL(URL))
             {
-                //TODO Recursive way fix
                 //Search of links on the website
                 HTMLLinkFinder Finder = new HTMLLinkFinder();
                 lstLinks = Finder.Finder(Creator, URL);
@@ -38,10 +37,21 @@ namespace Smart_Th_saurus
                 {
                     if (link.Substring(0, 1) == "/")
                     {
-                        TempLst = Finder.Finder(Creator, link);
+                        TempLst = Finder.Finder(Creator, URL.Substring(0, URL.Length-2) + link);
                         if(TempLst != null)
                         {
                             lstLinks = lstLinks.Union(TempLst).ToList();
+                        }
+                    }
+                    else
+                    {
+                        if (link.Contains(URL))
+                        {
+                            TempLst = Finder.Finder(Creator, link);
+                            if (TempLst != null)
+                            {
+                                lstLinks = lstLinks.Union(TempLst).ToList();
+                            }
                         }
                     }
                 }
@@ -72,8 +82,8 @@ namespace Smart_Th_saurus
                         }
                     }
                     Analysed++;
-                    Console.SetCursorPosition(0, 4);
-                    Console.WriteLine("Analysed " + Analysed * 100 / lstLinks.Count + "%");
+                    Console.SetCursorPosition(0, 5);
+                    Console.WriteLine("Analysed : " + Analysed * 100 / lstLinks.Count + "%");
                 }
 
                 //Text creation
@@ -81,8 +91,8 @@ namespace Smart_Th_saurus
                 {
                     Creator.CreateTXT(lstLinksName[x], TempWordLst[x]);
                     Created++;
-                    Console.SetCursorPosition(0, 5);
-                    Console.WriteLine("Created " + Created * 100 / lstLinksName.Count + "%");
+                    Console.SetCursorPosition(0, 6);
+                    Console.WriteLine("Created : " + Created * 100 / lstLinksName.Count + "%");
                 }
                 
                 Console.WriteLine("\n\nWebsite analysed!!!");
