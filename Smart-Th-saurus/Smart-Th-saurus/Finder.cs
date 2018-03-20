@@ -63,7 +63,6 @@ namespace Smart_Th_saurus
                 //Search of words
                 foreach (string link in lstLinks)
                 {
-                    //TODO Fix bug links without "/"
                     if (link.Substring(0, 1) == "/")
                     {
                         TempLst = Analyser.WordSearching(Creator, URL + link.Substring(1, link.Length - 1));

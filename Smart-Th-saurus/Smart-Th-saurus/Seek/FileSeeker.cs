@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Smart_Th_saurus
 {
-    class FileSeeker
+    class FileSeeker : GlobalSeekers
     {
         private static FileSeeker file;
 
@@ -17,6 +17,14 @@ namespace Smart_Th_saurus
                 file = new FileSeeker();
             }
             return file;
+        }
+
+        public void SeekOccurence(string directoryName)
+        {
+            //TODO Search files
+            //TODO Foreach file analyse and incremente TempFileOcc/TempFoldOcc
+            //TODO Compare TempFileOcc and MaxFileOccNbr && if more change MaxInfos
+            //TODO Reset TempFileOcc && end Foreach
         }
     }
 }

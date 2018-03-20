@@ -46,13 +46,14 @@ namespace Smart_Th_saurus
                         "Please wait...");
                     Finder finder = new Finder();
                     finder.Start(URL);
-                    Console.ReadLine();
                 }
                 
                 //Execute if User wants to research a word
                 if (keyState2 == 1 || keyState2 == -32767)
                 {
                     Console.Clear();
+                    Console.WriteLine("Searching occurences...\n" +
+                        "Please wait...");
                     Seeker seeker = new Seeker();
                     seeker.Start();
                 }
@@ -62,6 +63,7 @@ namespace Smart_Th_saurus
                 {
                     Environment.Exit(0);
                 }
+                Console.ReadLine();
                 Console.Clear();
             }
         }

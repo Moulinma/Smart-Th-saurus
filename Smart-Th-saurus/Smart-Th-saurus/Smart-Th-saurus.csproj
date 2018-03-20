@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSeekers.cs" />
     <Compile Include="Seek\FileSeeker.cs" />
     <Compile Include="Finder.cs" />
     <Compile Include="Find\HTMLLinkFinder.cs" />
