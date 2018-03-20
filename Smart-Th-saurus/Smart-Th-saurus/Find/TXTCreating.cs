@@ -12,19 +12,34 @@ namespace Smart_Th_saurus
     class TXTCreating
     {
         //Variables
-        string codeHTML;
-        int nbrTooLong;
+        private static string codeHTML;
+        private static string directoryName;
+        private static int nbrTooLong;
 
         //Object
-        WebClient client = new WebClient();
-        string[] UrlTempArray = new string[2];
+        private static WebClient client = new WebClient();
+        private static string[] TempDirectorySplit;
+        private static string[] UrlTempArray = new string[2];
+        private static TXTCreating creator;
 
         /// <summary>
-        /// Method that create a folder to db
+        /// Constructor that creates a directory
         /// </summary>
-        public TXTCreating()
+        public static TXTCreating GetTXT(string URL)
         {
-            //TODO Find a way to create a folder if not exist
+            if(creator == null)
+            {
+                creator = new TXTCreating();
+            }
+            TempDirectorySplit = URL.Split(':');
+            directoryName = TempDirectorySplit[1].Substring(2, TempDirectorySplit[1].Length - 2);
+            Directory.CreateDirectory(directoryName);
+
+            //Reset values
+            codeHTML = "";
+            nbrTooLong = 0;
+
+            return creator;
         }
 
         /// <summary>
@@ -93,7 +108,8 @@ namespace Smart_Th_saurus
             
             try
             {
-                FileStream stream = File.Create(path); StreamWriter t = new StreamWriter(stream);
+                FileStream stream = File.Create(directoryName + "/" + path);
+                StreamWriter t = new StreamWriter(stream);
                 t.WriteLine(Name);
                 foreach (string word in lstWords)
                 {
@@ -104,7 +120,7 @@ namespace Smart_Th_saurus
             }
             catch (System.IO.PathTooLongException)
             {
-                FileStream stream = File.Create("TooLongName" + nbrTooLong++ + ".txt"); StreamWriter t = new StreamWriter(stream);
+                FileStream stream = File.Create(directoryName + "/" + "TooLongName" + nbrTooLong++ + ".txt"); StreamWriter t = new StreamWriter(stream);
                 t.WriteLine(Name);
                 foreach (string word in lstWords)
                 {

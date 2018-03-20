@@ -10,6 +10,9 @@ namespace Smart_Th_saurus
     {
         public void Start()
         {
+            Console.Clear();
+            Console.WriteLine("Which word do you want to research?");
+            Console.ReadLine();
 
         }
     }

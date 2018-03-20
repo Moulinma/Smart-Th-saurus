@@ -9,6 +9,22 @@ namespace Smart_Th_saurus
     /// </summary>
     class HTMLTxtAnalyser
     {
+        //Objects
+        private static HTMLTxtAnalyser txtAnalyser;
+
+        /// <summary>
+        /// Constructor that verify if an HTMLTxtAnalyser already exists and returns it
+        /// </summary>
+        /// <returns>HTMLTxtAnalyser</returns>
+        public static HTMLTxtAnalyser GetHTMLTxt()
+        {
+            if(txtAnalyser == null)
+            {
+                txtAnalyser = new HTMLTxtAnalyser();
+            }
+            return txtAnalyser;
+        }
+
         /// <summary>
         /// Method which returns a list of words for every links on the website
         /// </summary>

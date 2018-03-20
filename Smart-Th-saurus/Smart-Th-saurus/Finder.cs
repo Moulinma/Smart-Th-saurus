@@ -24,14 +24,14 @@ namespace Smart_Th_saurus
             List<string> lstLinks = new List<string>();
             List<string> lstLinksName = new List<string>();
             List<string> TempLst = new List<string>();
-            TXTCreating Creator = new TXTCreating();
-            HTMLTxtAnalyser Analyser = new HTMLTxtAnalyser();
+            TXTCreating Creator = TXTCreating.GetTXT(URL);
+            HTMLTxtAnalyser Analyser = HTMLTxtAnalyser.GetHTMLTxt();
 
             //Verify the link of the website
             if (Creator.VerifyURL(URL))
             {
                 //Search of links on the website
-                HTMLLinkFinder Finder = new HTMLLinkFinder();
+                HTMLLinkFinder Finder = HTMLLinkFinder.GetHTMLLink();
                 lstLinks = Finder.Finder(Creator, URL);
                 foreach(string link in lstLinks)
                 {
@@ -63,6 +63,7 @@ namespace Smart_Th_saurus
                 //Search of words
                 foreach (string link in lstLinks)
                 {
+                    //TODO Fix bug links without "/"
                     if (link.Substring(0, 1) == "/")
                     {
                         TempLst = Analyser.WordSearching(Creator, URL + link.Substring(1, link.Length - 1));
@@ -94,7 +95,6 @@ namespace Smart_Th_saurus
                     Console.SetCursorPosition(0, 6);
                     Console.WriteLine("Created : " + Created * 100 / lstLinksName.Count + "%");
                 }
-                
                 Console.WriteLine("\n\nWebsite analysed!!!");
             }
         }

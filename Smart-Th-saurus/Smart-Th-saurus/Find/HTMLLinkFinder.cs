@@ -8,6 +8,22 @@ namespace Smart_Th_saurus
     /// </summary>
     class HTMLLinkFinder
     {
+        //Objects
+        private static HTMLLinkFinder linkFinder;
+
+        /// <summary>
+        /// Constructor that will verify if a HTMLLinkFinder already exist and return it
+        /// </summary>
+        /// <returns>HTMLLinkFinder</returns>
+        public static HTMLLinkFinder GetHTMLLink()
+        {
+            if(linkFinder == null)
+            {
+                linkFinder = new HTMLLinkFinder();
+            }
+            return linkFinder;
+        }
+
         /// <summary>
         /// Method to search links
         /// </summary>

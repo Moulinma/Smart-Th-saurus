@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
 
 namespace Smart_Th_saurus
 {
@@ -8,10 +8,15 @@ namespace Smart_Th_saurus
     /// </summary>
     class Program
     {
+        //Hook to the windows API
+        [DllImport("user32.dll")]
+        public static extern int GetAsyncKeyState(Int32 i);
+
         /// <summary>
         /// Main method who launch the section that the User wants
         /// </summary>
         /// <param name="args"></param>
+        /// 
         static void Main(string[] args)
         {
             while (true)
@@ -20,14 +25,15 @@ namespace Smart_Th_saurus
                 "1. Website Analyse\n" +
                 "2. Word Research\n" +
                 "3. Exit\n");
-                Console.ReadLine();
-                //TODO When User press a key analyse it
-                bool x = true;
-                bool y = false;
-                bool z = false;
+
+                //Appel de l'api
+                Console.ReadKey();
+                int keyState1 = GetAsyncKeyState(49);
+                int keyState2 = GetAsyncKeyState(50);
+                int keyState3 = GetAsyncKeyState(51);
 
                 //Execute if User wants to analyse a website
-                if (x)
+                if (keyState1 == 1 || keyState1 == -32767)
                 {
                     Console.Clear();
                     Console.WriteLine("Enter the link of the website you want to analyse");
@@ -42,9 +48,9 @@ namespace Smart_Th_saurus
                     finder.Start(URL);
                     Console.ReadLine();
                 }
-
+                
                 //Execute if User wants to research a word
-                else if (y)
+                if (keyState2 == 1 || keyState2 == -32767)
                 {
                     Console.Clear();
                     Seeker seeker = new Seeker();
@@ -52,7 +58,7 @@ namespace Smart_Th_saurus
                 }
 
                 //Exit application
-                else if (z)
+                if (keyState3 == 1 || keyState3 == -32767)
                 {
                     Environment.Exit(0);
                 }
