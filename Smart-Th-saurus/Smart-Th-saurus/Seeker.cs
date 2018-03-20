@@ -35,6 +35,8 @@ namespace Smart_Th_saurus
                         tempNameArray = folder.Split('\\');
                         maxOccFoldName = tempNameArray[tempNameArray.Count()-1];
                     }
+
+                    Console.SetCursorPosition(0, 3);
                     Console.WriteLine("Analysed : " + ++analysed + "/" + arrayFolders.Count());
                     tempFoldOcc = 0;
                 }
