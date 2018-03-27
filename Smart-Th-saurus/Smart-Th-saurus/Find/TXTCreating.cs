@@ -109,7 +109,7 @@ namespace Smart_Th_saurus
             try
             {
                 FileStream stream = File.Create(directoryName + "/" + path);
-                StreamWriter t = new StreamWriter(stream);
+                StreamWriter t = new StreamWriter(stream, System.Text.Encoding.UTF8);
                 t.WriteLine(Name);
                 foreach (string word in lstWords)
                 {

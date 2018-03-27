@@ -30,7 +30,7 @@ namespace Smart_Th_saurus
             //Verify the link of the website
             if (Creator.VerifyURL(URL))
             {
-                //TODO Fix bug Of links which begin by the site name (unknown bug location)
+                //TODO Fix bug of links which begin by the site name (unknown bug location)
                 //Search of links on the website
                 HTMLLinkFinder Finder = HTMLLinkFinder.GetHTMLLink();
                 lstLinks = Finder.Finder(Creator, URL);

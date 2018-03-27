@@ -9,6 +9,8 @@ namespace Smart_Th_saurus
     class GlobalSeekers
     {
         //Variables
+        protected static string word;
+
         protected static string[] arrayFolders;
         protected static int maxOccFoldNbr;
         protected static string maxOccFoldName;

@@ -10,9 +10,12 @@ namespace Smart_Th_saurus
 {
     class FileSeeker : GlobalSeekers
     {
-        string[] arrayFile;
-        string[] tempNameArray;
+        //Variables
+        private string wordInFile;
+        private string[] arrayFile;
+        private string[] tempArray;
 
+        //Objects
         private static FileSeeker file;
 
         public static FileSeeker GetFile()
@@ -26,18 +29,28 @@ namespace Smart_Th_saurus
 
         public void SeekOccurence(string directoryName)
         {
-            arrayFile = Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location + directoryName));
+            arrayFile = Directory.GetFiles(directoryName);
             foreach(string files in arrayFile)
             {
-                //TODO Analyse and incremente TempFileOcc/TempFoldOcc
+                StreamReader reader = new StreamReader(files, true);
+                while((wordInFile = reader.ReadLine()) != null)
+                {
+                    if(wordInFile == word)
+                    {
+                        ++tempFileOcc;
+                        ++tempFoldOcc;
+                    }
+                }
                 if(tempFileOcc > maxOccFileNbr)
                 {
                     maxOccFileNbr = tempFileOcc;
-                    tempNameArray = files.Split('\\');
-                    maxOccFileName = tempNameArray[tempNameArray.Count() - 1];
-                    maxOccFileFold = directoryName;
+                    tempArray = files.Split('\\');
+                    maxOccFileName = tempArray[tempArray.Count() - 1].Substring(0, tempArray[tempArray.Count() - 1].Length - 4);
+                    tempArray = directoryName.Split('\\');
+                    maxOccFileFold = tempArray[tempArray.Count() - 1];
                 }
                 tempFileOcc = 0;
+                reader.Close();
             }
         }
     }

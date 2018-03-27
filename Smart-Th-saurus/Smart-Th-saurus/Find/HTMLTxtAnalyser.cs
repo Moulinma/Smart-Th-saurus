@@ -87,6 +87,7 @@ namespace Smart_Th_saurus
                         {
                             if (word != "")
                             {
+                                word = word.ToLower();
                                 lstWords.Add(word);
                                 word = "";
                             }
