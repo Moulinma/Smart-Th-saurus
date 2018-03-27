@@ -38,7 +38,7 @@ namespace Smart_Th_saurus
                     Console.Clear();
                     Console.WriteLine("Enter the link of the website you want to analyse");
                     string URL = Console.ReadLine();
-                    if (URL.Substring(URL.Length - 2, 1) != "/")
+                    if (URL.Substring(URL.Length - 1, 1) != "/")
                     {
                         URL += "/";
                     }

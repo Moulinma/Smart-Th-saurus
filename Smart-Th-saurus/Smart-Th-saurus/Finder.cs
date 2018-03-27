@@ -30,7 +30,6 @@ namespace Smart_Th_saurus
             //Verify the link of the website
             if (Creator.VerifyURL(URL))
             {
-                //TODO Fix bug of links which begin by the site name (unknown bug location)
                 //Search of links on the website
                 HTMLLinkFinder Finder = HTMLLinkFinder.GetHTMLLink();
                 lstLinks = Finder.Finder(Creator, URL);
@@ -38,21 +37,26 @@ namespace Smart_Th_saurus
                 {
                     if (link.Substring(0, 1) == "/")
                     {
-                        TempLst = Finder.Finder(Creator, URL.Substring(0, URL.Length-2) + link);
+                        TempLst = Finder.Finder(Creator, URL.Substring(0, URL.Length-1) + link);
                         if(TempLst != null)
                         {
                             lstLinks = lstLinks.Union(TempLst).ToList();
                         }
                     }
-                    else
+                    else if (link.Substring(link.Length - 5, 5) == ".html")
                     {
-                        if (link.Contains(URL))
+                        TempLst = Finder.Finder(Creator, URL + link);
+                        if (TempLst != null)
                         {
-                            TempLst = Finder.Finder(Creator, link);
-                            if (TempLst != null)
-                            {
-                                lstLinks = lstLinks.Union(TempLst).ToList();
-                            }
+                            lstLinks = lstLinks.Union(TempLst).ToList();
+                        }
+                    }
+                    else if (link.Contains(URL))
+                    {
+                        TempLst = Finder.Finder(Creator, link);
+                        if (TempLst != null)
+                        {
+                            lstLinks = lstLinks.Union(TempLst).ToList();
                         }
                     }
                 }
@@ -73,7 +77,16 @@ namespace Smart_Th_saurus
                             lstLinksName.Add(link.Substring(1, link.Length - 1));
                         }
                     }
-                    else if (link == URL)
+                    else if (link.Substring(link.Length - 5, 5) == ".html")
+                    {
+                        TempLst = Finder.Finder(Creator, URL + link);
+                        if (TempLst != null)
+                        {
+                            TempWordLst.Add(TempLst);
+                            lstLinksName.Add(link);
+                        }
+                    }
+                    else if (link.Contains(URL))
                     {
                         TempLst = Analyser.WordSearching(Creator, link);
                         if (TempLst != null)

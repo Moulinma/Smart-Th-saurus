@@ -1,0 +1,16 @@
+﻿clients.html
+index.html
+offres.html
+biblio.html
+contact.php
+clients.html
+http://www.diag64.com/
+http://www.diag64.fr/
+http://redexpo.fr
+http://crap64.com
+index.html
+offres.html
+biblio.html
+contact.php
+clients.html
+http://petit-site-internet.com/

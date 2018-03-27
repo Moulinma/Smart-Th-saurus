@@ -1,0 +1,12 @@
+﻿biblio.html
+index.html
+offres.html
+biblio.html
+contact.php
+clients.html
+index.html
+offres.html
+biblio.html
+contact.php
+clients.html
+http://petit-site-internet.com/

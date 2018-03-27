@@ -18,11 +18,12 @@ namespace Smart_Th_saurus
             analysed = 0;
             Console.Clear();
             Console.WriteLine("Which word do you want to research?");
+            //TODO Fix bug accents came after fix of bug recursivity
             word = Console.ReadLine();
             word = word.ToLower();
-            word = word.Replace("é", "Ã©");
-            word = word.Replace("è", "Ã¨");
-            word = word.Replace("à", "Ã");
+            word = word.Replace("é", "ã©");
+            word = word.Replace("è", "ã¨");
+            word = word.Replace("à", "ã");
 
             if (folder.SearchFolders())
             {
@@ -40,11 +41,12 @@ namespace Smart_Th_saurus
                     Console.WriteLine("Analysed : " + ++analysed + "/" + arrayFolders.Count());
                     tempFoldOcc = 0;
                 }
-
-                word = word.Replace("Ã©", "é");
-                word = word.Replace("Ã¨", "è");
-                word = word.Replace("Ã", "à");
-                Console.WriteLine("\n\n\nResults for the word \"" +
+                word = word.Replace("ã©", "é");
+                word = word.Replace("ã¨", "è");
+                word = word.Replace("ã", "à");
+                if(maxOccFileNbr != 0)
+                {
+                    Console.WriteLine("\n\n\nResults for the word \"" +
                     word +
                     "\" :\n\n" +
                     //Page
@@ -61,9 +63,16 @@ namespace Smart_Th_saurus
                     "\" with a total of " +
                     maxOccFoldNbr +
                     " occurences.\n");
-                
-                maxOccFileNbr = 0;
-                maxOccFoldNbr = 0;
+
+                    maxOccFileNbr = 0;
+                    maxOccFoldNbr = 0;
+                }
+                else
+                {
+                    Console.WriteLine("\n\n\nThe word \"" +
+                        word +
+                        "\" wasn't found in the database.");
+                }
             }
         }
     }
