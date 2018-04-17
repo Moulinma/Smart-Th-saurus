@@ -1,0 +1,1 @@
+﻿bundles_psychologiestestsfront_sprite_icons.svg#arrow3

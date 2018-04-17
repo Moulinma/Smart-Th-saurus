@@ -37,18 +37,21 @@ namespace Smart_Th_saurus
                 {
                     if (link.Substring(0, 1) == "/")
                     {
-                        TempLst = Finder.Finder(Creator, URL.Substring(0, URL.Length-1) + link);
-                        if(TempLst != null)
+                        TempLst = Finder.Finder(Creator, URL.Substring(0, URL.Length - 1) + link);
+                        if (TempLst != null)
                         {
                             lstLinks = lstLinks.Union(TempLst).ToList();
                         }
                     }
-                    else if (link.Substring(link.Length - 5, 5) == ".html")
+                    else if (link.Length > 5)
                     {
-                        TempLst = Finder.Finder(Creator, URL + link);
-                        if (TempLst != null)
+                        if(link.Substring(link.Length - 5, 5) == ".html")
                         {
-                            lstLinks = lstLinks.Union(TempLst).ToList();
+                            TempLst = Finder.Finder(Creator, URL + link);
+                            if (TempLst != null)
+                            {
+                                lstLinks = lstLinks.Union(TempLst).ToList();
+                            }
                         }
                     }
                     else if (link.Contains(URL))
@@ -77,13 +80,16 @@ namespace Smart_Th_saurus
                             lstLinksName.Add(link.Substring(1, link.Length - 1));
                         }
                     }
-                    else if (link.Substring(link.Length - 5, 5) == ".html")
+                    else if (link.Length > 5)
                     {
-                        TempLst = Finder.Finder(Creator, URL + link);
-                        if (TempLst != null)
+                        if(link.Substring(link.Length - 5, 5) == ".html")
                         {
-                            TempWordLst.Add(TempLst);
-                            lstLinksName.Add(link);
+                            TempLst = Finder.Finder(Creator, URL + link);
+                            if (TempLst != null)
+                            {
+                                TempWordLst.Add(TempLst);
+                                lstLinksName.Add(link);
+                            }
                         }
                     }
                     else if (link.Contains(URL))

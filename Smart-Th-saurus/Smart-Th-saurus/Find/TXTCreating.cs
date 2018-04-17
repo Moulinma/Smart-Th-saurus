@@ -56,7 +56,11 @@ namespace Smart_Th_saurus
                     UrlTempArray = URL.Split('?');
                     URL = UrlTempArray[0];
                 }
-                codeHTML = client.DownloadString(URL);
+                try
+                {
+                    codeHTML = client.DownloadString(URL);
+                }
+                catch(Exception){}
                 return codeHTML;
             }
             catch (WebException)
@@ -79,7 +83,7 @@ namespace Smart_Th_saurus
                 {
                     codeHTML = client.DownloadString(URL);
                 }
-                catch (WebException)
+                catch (Exception)
                 {
                     Console.WriteLine("The URL isn't valid");
                     Test = false;
@@ -104,6 +108,7 @@ namespace Smart_Th_saurus
             Name = Regex.Replace(Name, @"/", "_");
             Name = Regex.Replace(Name, @"\?", "_");
             Name = Regex.Replace(Name, @"=", "_");
+            Name = Regex.Replace(Name, @":", "_");
             string path = Name + ".txt";
             
             try
