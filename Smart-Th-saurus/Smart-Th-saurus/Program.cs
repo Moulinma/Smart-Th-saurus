@@ -19,6 +19,8 @@ namespace Smart_Th_saurus
         /// 
         static void Main(string[] args)
         {
+            //TODO [GLO] Tests
+            //TODO [GLO] Opérateurs
             while (true)
             {
                 Console.Write("What do you want to do?\n" +
