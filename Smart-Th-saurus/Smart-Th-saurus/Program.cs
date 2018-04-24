@@ -38,14 +38,17 @@ namespace Smart_Th_saurus
                     Console.Clear();
                     Console.WriteLine("Enter the link of the website you want to analyse");
                     string URL = Console.ReadLine();
-                    if (URL.Substring(URL.Length - 1, 1) != "/")
+                    if(URL != "")
                     {
-                        URL += "/";
+                        if (URL.Substring(URL.Length - 1, 1) != "/")
+                        {
+                            URL += "/";
+                        }
+                        Console.WriteLine("Analysing the website...\n" +
+                            "Please wait...");
+                        Finder finder = new Finder();
+                        finder.Start(URL);
                     }
-                    Console.WriteLine("Analysing the website...\n" +
-                        "Please wait...");
-                    Finder finder = new Finder();
-                    finder.Start(URL);
                 }
                 
                 //Execute if User wants to research a word

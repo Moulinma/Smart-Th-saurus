@@ -31,9 +31,12 @@ namespace Smart_Th_saurus
             {
                 creator = new TXTCreating();
             }
-            TempDirectorySplit = URL.Split(':');
-            directoryName = TempDirectorySplit[1].Substring(2, TempDirectorySplit[1].Length - 2);
-            Directory.CreateDirectory(directoryName);
+            if(creator.VerifyURL(URL))
+            {
+                TempDirectorySplit = URL.Split(':');
+                directoryName = TempDirectorySplit[1].Substring(2, TempDirectorySplit[1].Length - 2);
+                Directory.CreateDirectory(directoryName);
+            }
 
             //Reset values
             codeHTML = "";
@@ -76,6 +79,7 @@ namespace Smart_Th_saurus
         /// <returns>Returns if the website is accessible</returns>
         public bool VerifyURL(string URL)
         {
+            //TODO URL non valide (accessible par navigateur)
             if(URL != "")
             {
                 bool Test = true;
@@ -85,6 +89,7 @@ namespace Smart_Th_saurus
                 }
                 catch (Exception)
                 {
+                    Console.SetCursorPosition(0, 5);
                     Console.WriteLine("The URL isn't valid");
                     Test = false;
                 }
@@ -95,7 +100,6 @@ namespace Smart_Th_saurus
                 Console.WriteLine("The URL isn't valid");
                 return false;
             }
-            
         }
 
         /// <summary>
