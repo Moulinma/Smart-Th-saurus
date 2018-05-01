@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Smart_Th_saurus
 {
+    /// <summary>
+    /// Class that seek the occurences in each files of the current directory
+    /// </summary>
     class FileSeeker : GlobalSeekers
     {
         //Variables
@@ -18,6 +15,10 @@ namespace Smart_Th_saurus
         //Objects
         private static FileSeeker file;
 
+        /// <summary>
+        /// Base constructor of the class
+        /// </summary>
+        /// <returns>Return the unique file</returns>
         public static FileSeeker GetFile()
         {
             if (file == null)
@@ -27,20 +28,27 @@ namespace Smart_Th_saurus
             return file;
         }
 
+        /// <summary>
+        /// Seek the number of occurence in each file and increment the globals variables
+        /// </summary>
+        /// <param name="directoryName"></param>
         public void SeekOccurence(string directoryName)
         {
             arrayFile = Directory.GetFiles(directoryName);
+            //Analyse each file
             foreach(string files in arrayFile)
             {
                 StreamReader reader = new StreamReader(files, true);
                 while((wordInFile = reader.ReadLine()) != null)
                 {
+                    //Increment occurence if same word
                     if(wordInFile == word)
                     {
                         ++tempFileOcc;
                         ++tempFoldOcc;
                     }
                 }
+                //Change globals variables if the current number of occurence is more that the current max
                 if(tempFileOcc > maxOccFileNbr)
                 {
                     maxOccFileNbr = tempFileOcc;

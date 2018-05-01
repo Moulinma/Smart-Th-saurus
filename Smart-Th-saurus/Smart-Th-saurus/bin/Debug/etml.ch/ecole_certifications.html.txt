@@ -309,7 +309,6 @@ est
 une
 institution
 certifiã©e.
-{slider&nbsp;certification&nbsp;iso9001}
 l'ecole
 technique
 -
@@ -326,7 +325,8 @@ iso
 9001.
 &nbsp;
 certification
-iso9001
+iso
+9001
 qu'est-ce
 qu'une
 certification
@@ -603,6 +603,7 @@ amã©liorã©e.
 le
 certificat
 eduqua
+(2012)
 qualifie
 une
 bonne

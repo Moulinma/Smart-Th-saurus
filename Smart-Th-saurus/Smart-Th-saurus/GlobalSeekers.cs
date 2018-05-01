@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Smart_Th_saurus
+﻿namespace Smart_Th_saurus
 {
+    /// <summary>
+    /// Class which contain globals variables for the seeker section
+    /// </summary>
     class GlobalSeekers
     {
         //Variables
