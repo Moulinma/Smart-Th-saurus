@@ -11,6 +11,9 @@ namespace Smart_Th_saurus
         private string wordInFile;
         private string[] arrayFile;
         private string[] tempArray;
+        private int foldOcc;
+        private bool containsPlus;
+        private bool isValide;
 
         //Objects
         private static FileSeeker file;
@@ -38,6 +41,9 @@ namespace Smart_Th_saurus
             //Analyse each file
             foreach(string files in arrayFile)
             {
+                containsPlus = false;
+                isValide = true;
+
                 StreamReader reader = new StreamReader(files, true);
                 while((wordInFile = reader.ReadLine()) != null)
                 {
@@ -45,12 +51,27 @@ namespace Smart_Th_saurus
                     if(wordInFile == word)
                     {
                         ++tempFileOcc;
-                        ++tempFoldOcc;
+                        ++foldOcc;
+                    }
+                    if (multiple)
+                    {
+                        if(wordInFile == wordPlus)
+                        {
+                            containsPlus = true;
+                        }
                     }
                 }
                 //Change globals variables if the current number of occurence is more that the current max
-                if(tempFileOcc > maxOccFileNbr)
+                if (multiple)
                 {
+                    if(!plus && containsPlus || plus && !containsPlus)
+                    {
+                        isValide = false;
+                    }
+                }
+                if (tempFileOcc > maxOccFileNbr || isValide)
+                {
+                    tempFoldOcc += foldOcc;
                     maxOccFileNbr = tempFileOcc;
                     tempArray = files.Split('\\');
                     maxOccFileName = tempArray[tempArray.Count() - 1].Substring(0, tempArray[tempArray.Count() - 1].Length - 4);
@@ -58,6 +79,7 @@ namespace Smart_Th_saurus
                     maxOccFileFold = tempArray[tempArray.Count() - 1];
                 }
                 tempFileOcc = 0;
+                foldOcc = 0;
                 reader.Close();
             }
         }

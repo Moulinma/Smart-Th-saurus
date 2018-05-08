@@ -18,5 +18,9 @@
 
         protected static int tempFoldOcc;
         protected static int tempFileOcc;
+
+        protected static bool multiple;
+        protected static bool plus;
+        protected static string wordPlus;
     }
 }

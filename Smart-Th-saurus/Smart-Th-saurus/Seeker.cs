@@ -29,6 +29,25 @@ namespace Smart_Th_saurus
             //Verify if the word is real
             if(word != "")
             {
+                string[] TempWord = word.Split(' ');
+                if(TempWord.Count() == 3)
+                {
+                    word = TempWord[0];
+                    multiple = true;
+                    if (TempWord[1] == "+")
+                    {
+                        plus = true;
+                    }
+                    else
+                    {
+                        plus = false;
+                    }
+                    wordPlus = TempWord[2];
+                }
+                else
+                {
+                    Console.WriteLine("GESTION DE PLUS DE 2 MOTS NON-IMPLÉMENTÉE ACTUELLEMENT!!!");
+                }
                 //Change the word to make it seekable
                 word = word.ToLower();
                 word = word.Replace("û", "ã»");
@@ -39,6 +58,20 @@ namespace Smart_Th_saurus
                 word = word.Replace("ê", "ãª");
                 word = word.Replace("ç", "ã§");
                 word = word.Replace("à", "ã");
+
+                if (multiple)
+                {
+                    //Change the second word to make it seekable
+                    wordPlus = wordPlus.ToLower();
+                    wordPlus = wordPlus.Replace("û", "ã»");
+                    wordPlus = wordPlus.Replace("ù", "ã¹");
+                    wordPlus = wordPlus.Replace("î", "ã®");
+                    wordPlus = wordPlus.Replace("é", "ã©");
+                    wordPlus = wordPlus.Replace("è", "ã¨");
+                    wordPlus = wordPlus.Replace("ê", "ãª");
+                    wordPlus = wordPlus.Replace("ç", "ã§");
+                    wordPlus = wordPlus.Replace("à", "ã");
+                }
 
                 //Verify that folders exists and return them
                 if (folder.SearchFolders())
@@ -71,6 +104,18 @@ namespace Smart_Th_saurus
                     word = word.Replace("ã§", "ç");
                     word = word.Replace("ã", "à");
 
+                    if (multiple)
+                    {
+                        wordPlus = wordPlus.Replace("ã»", "û");
+                        wordPlus = wordPlus.Replace("ã¹", "ù");
+                        wordPlus = wordPlus.Replace("ã®", "î");
+                        wordPlus = wordPlus.Replace("ã©", "é");
+                        wordPlus = wordPlus.Replace("ã¨", "è");
+                        wordPlus = wordPlus.Replace("ãª", "ê");
+                        wordPlus = wordPlus.Replace("ã§", "ç");
+                        wordPlus = wordPlus.Replace("ã", "à");
+                    }
+
                     //Show results if they aren't null
                     if (maxOccFileNbr != 0)
                     {
@@ -91,6 +136,22 @@ namespace Smart_Th_saurus
                         "\" with a total of " +
                         maxOccFoldNbr +
                         " occurences.\n");
+
+                        if (multiple)
+                        {
+                            if (plus)
+                            {
+                                Console.WriteLine("Parameters added : \n+ \"" +
+                                wordPlus +
+                                "\"");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Parameters added : \n- \"" +
+                                wordPlus +
+                                "\"");
+                            }
+                        }
 
                         maxOccFileNbr = 0;
                         maxOccFoldNbr = 0;
