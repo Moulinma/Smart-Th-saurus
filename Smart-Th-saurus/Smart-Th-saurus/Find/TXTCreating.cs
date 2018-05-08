@@ -79,8 +79,7 @@ namespace Smart_Th_saurus
         /// <returns>Returns if the website is accessible</returns>
         public bool VerifyURL(string URL)
         {
-            //TODO URL non valide (accessible par navigateur)
-            if(URL != "")
+            if (URL != "")
             {
                 bool Test = true;
                 try
@@ -113,6 +112,8 @@ namespace Smart_Th_saurus
             Name = Regex.Replace(Name, @"\?", "_");
             Name = Regex.Replace(Name, @"=", "_");
             Name = Regex.Replace(Name, @":", "_");
+            Name = Regex.Replace(Name, @"<", "_");
+            Name = Regex.Replace(Name, @">", "_");
             string path = Name + ".txt";
             
             try
