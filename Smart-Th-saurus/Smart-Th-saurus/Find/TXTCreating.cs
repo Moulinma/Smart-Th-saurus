@@ -90,14 +90,14 @@ namespace Smart_Th_saurus
                 catch (Exception)
                 {
                     Console.SetCursorPosition(0, 5);
-                    Console.WriteLine("The URL isn't valid");
+                    Console.WriteLine("The URL isn't valid!");
                     Test = false;
                 }
                 return Test;
             }
             else
             {
-                Console.WriteLine("The URL isn't valid");
+                Console.WriteLine("The URL isn't valid!");
                 return false;
             }
         }
