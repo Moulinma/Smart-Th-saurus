@@ -104,6 +104,7 @@ namespace Smart_Th_saurus
 
                         if (multiple)
                         {
+                            //Replace the second word to put it back in the form of the user
                             wordPlus = wordPlus.Replace("ã»", "û");
                             wordPlus = wordPlus.Replace("ã¹", "ù");
                             wordPlus = wordPlus.Replace("ã®", "î");
@@ -137,15 +138,16 @@ namespace Smart_Th_saurus
 
                             if (multiple)
                             {
+                                //Add the second search of the user in the results
                                 if (plus)
                                 {
-                                    Console.WriteLine("Parameters added : \n+ \"" +
+                                    Console.WriteLine("Parameters added : \n + \"" +
                                     wordPlus +
                                     "\"");
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Parameters added : \n- \"" +
+                                    Console.WriteLine("Parameters added : \n - \"" +
                                     wordPlus +
                                     "\"");
                                 }

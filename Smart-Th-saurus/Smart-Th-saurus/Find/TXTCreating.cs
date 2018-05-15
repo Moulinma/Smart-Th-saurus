@@ -108,6 +108,7 @@ namespace Smart_Th_saurus
         /// <param name="lstWords">List of the words of the page</param>
         public void CreateTXT(string Name, List<string> lstWords)
         {
+            //Replace the unallowed characters in the name of the file
             Name = Regex.Replace(Name, @"/", "_");
             Name = Regex.Replace(Name, @"\?", "_");
             Name = Regex.Replace(Name, @"=", "_");
@@ -118,6 +119,7 @@ namespace Smart_Th_saurus
             
             try
             {
+                //Create the file and write the words in it
                 FileStream stream = File.Create(directoryName + "/" + path);
                 StreamWriter t = new StreamWriter(stream, System.Text.Encoding.UTF8);
                 t.WriteLine(Name);
@@ -130,6 +132,7 @@ namespace Smart_Th_saurus
             }
             catch (System.IO.PathTooLongException)
             {
+                //Change the name of the file if it's too long for the FileStream
                 FileStream stream = File.Create(directoryName + "/" + "TooLongName" + nbrTooLong++ + ".txt"); StreamWriter t = new StreamWriter(stream);
                 t.WriteLine(Name);
                 foreach (string word in lstWords)

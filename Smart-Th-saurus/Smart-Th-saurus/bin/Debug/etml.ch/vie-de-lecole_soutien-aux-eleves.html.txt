@@ -321,13 +321,16 @@ met
 disposition
 un
 rã©seau
-nommã©â i.a.m&amp;co(infirmiã¨re
--â aumã´nier
--â mã©diateur
-&amp;â conseillã¨re
+nommã©&nbsp;i.a.m&amp;co
+(infirmiã¨re
+-&nbsp;aumã´nier
+-&nbsp;mã©diateur
+&amp;&nbsp;conseillã¨re
 psychologue
 en
-orientation).l'infirmiã¨remme
+orientation).
+l'infirmiã¨re
+mme
 nicole
 zehnder
 clement
@@ -370,7 +373,8 @@ de
 la
 santã©
 dans
-l'ã©cole.elle
+l'ã©cole.
+elle
 est
 prã©sente
 ã 
@@ -391,35 +395,42 @@ n306,
 aux
 horaires
 suivants
-:lundiâ â 
+:
+lundi&nbsp;&nbsp;
 8h00
 ã 
-16h00mardiâ â 
+16h00
+mardi&nbsp;&nbsp;
 8h00
 ã 
-12h30jeudiâ â 
+12h30
+jeudi&nbsp;&nbsp;
 8h00
 ã 
-16h10vous
+16h10
+vous
 pouvez
 ã©galement
 l'atteindre
 selon
 l'horaire
 ci-dessus
-:tã©lã©phone
-directâ â 
+:
+tã©lã©phone
+direct&nbsp;&nbsp;
 021
 316
 78
-03tã©lã©phone
-mobileâ 
+03
+tã©lã©phone
+mobile&nbsp;
 079
 159
 29
-34e-mail
+34
+e-mail
 :
-â cette
+&nbsp;cette
 adresse
 e-mail
 est
@@ -435,7 +446,8 @@ le
 javascript
 pour
 la
-visualiser.il
+visualiser.
+il
 n'y
 a
 pas
@@ -444,7 +456,10 @@ permanence
 durant
 les
 vacances
-scolaires.â l'aumã´nierm.
+scolaires.
+&nbsp;
+l'aumã´nier
+m.
 hervã©
 martin
 est
@@ -461,7 +476,8 @@ de
 partage
 en
 toute
-confidentialitã©.il
+confidentialitã©.
+il
 est
 prã©sent
 ã 
@@ -481,29 +497,34 @@ n304,
 aux
 horaires
 suivants
-:jeudi
-â 
+:
+jeudi
+&nbsp;
 8h00
 ã 
-16h00vous
+16h00
+vous
 pouvez
 ã©galement
 l'atteindre
 selon
 l'horaire
 ci-dessus
-:tã©lã©phone
-directâ â 
+:
+tã©lã©phone
+direct&nbsp;&nbsp;
 021
 316
 77
-60tã©lã©phone
-mobileâ 
+60
+tã©lã©phone
+mobile&nbsp;
 079
 538
 23
-41e-mail
-:â 
+41
+e-mail
+:&nbsp;
 cette
 adresse
 e-mail
@@ -520,7 +541,8 @@ le
 javascript
 pour
 la
-visualiser.il
+visualiser.
+il
 n'y
 a
 pas
@@ -529,8 +551,10 @@ permanence
 durant
 les
 vacances
-scolaires.le
-mã©diateurm.
+scolaires.
+le
+mã©diateur
+m.
 alain
 moser,
 maã®tre
@@ -574,11 +598,13 @@ n304,
 aux
 horaires
 suivants
-:mardi
-â 
+:
+mardi
+&nbsp;
 12h20
 ã 
-13h05vous
+13h05
+vous
 pouvez
 ã©galement
 l'atteindre
@@ -589,9 +615,10 @@ bã¢timent
 sud
 s309
 par
-:tã©lã©phone
+:
+tã©lã©phone
 direct
-â 
+&nbsp;
 021
 316
 77
@@ -600,8 +627,9 @@ ou
 021
 316
 77
-95e-mail
-:â cette
+95
+e-mail
+:&nbsp;cette
 adresse
 e-mail
 est
@@ -617,7 +645,8 @@ le
 javascript
 pour
 la
-visualiser.â â â il
+visualiser.&nbsp;&nbsp;&nbsp;
+il
 n'y
 a
 pas
@@ -626,11 +655,13 @@ permanence
 durant
 les
 vacances
-scolaires.la
+scolaires.
+la
 psychologue,
 conseillã¨re
 en
-orientationmme
+orientation
+mme
 delphine
 maye
 est
@@ -663,7 +694,8 @@ durant
 votre
 sã©jour
 chez
-nous.elle
+nous.
+elle
 est
 prã©sente
 ã 
@@ -685,18 +717,22 @@ n305,
 aux
 horaires
 suivants
-:lundiâ â â â 
-â â â 
+:
+lundi&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
 08h45
 ã 
-13h15jeudiâ â â â â â â â 
+13h15
+jeudi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 08h15
 ã 
-16h45vendredi
-â â 
+16h45
+vendredi
+&nbsp;&nbsp;
 07h45
 ã 
-11h45pour
+11h45
+pour
 tout
 rendez-vous,
 merci
@@ -704,8 +740,9 @@ de
 prendre
 contact
 par
-:tã©lã©phone
-directâ â 
+:
+tã©lã©phone
+direct&nbsp;&nbsp;
 021
 316
 77
@@ -714,8 +751,9 @@ ou
 076
 355
 54
-31e-mail
-:â cette
+31
+e-mail
+:&nbsp;cette
 adresse
 e-mail
 est
@@ -731,7 +769,8 @@ le
 javascript
 pour
 la
-visualiser.â â il
+visualiser.&nbsp;&nbsp;
+il
 n'y
 a
 pas
@@ -740,9 +779,12 @@ permanence
 durant
 les
 vacances
-scolaires.liens
-utilesaides
-financiã¨resoffice
+scolaires.
+liens
+utiles
+aides
+financiã¨res
+office
 cantonal
 des
 bourses
@@ -750,7 +792,8 @@ d'ã©tudes
 et
 d'apprentissageaide
 financiã¨re
-cantonalefondation
+cantonale
+fondation
 bã©atricela
 fondation
 bã©atrice
@@ -770,7 +813,8 @@ d'ã©tudes
 et
 des
 aides
-d'urgences.lions
+d'urgences.
+lions
 club
 la
 venogele
@@ -787,7 +831,9 @@ un
 ã©tudiant
 durant
 sa
-formation.soutienciaociao.ch
+formation.
+soutien
+ciaociao.ch
 est
 un
 site
@@ -857,7 +903,8 @@ ou
 mieux
 gã©rer
 leur
-consommation.disala
+consommation.
+disala
 division
 interdisciplinaire
 de
@@ -895,7 +942,8 @@ chroniques
 et
 autres
 problã¨mes
-mã©dicaux.kif
+mã©dicaux.
+kif
 ton
 tafsite
 d'aide
@@ -921,9 +969,10 @@ ou
 un
 logement
 pas
-cher.147
+cher.
+147
 site
-quiâ s'adresse
+qui&nbsp;s'adresse
 aux
 enfants
 et
@@ -948,37 +997,7 @@ l'amour,
 l'amitiã©
 ou
 la
-sexualitã©aide
-ã 
-la
-formationformation-apprentisvous
-rencontrez
-des
-difficultã©s
-aux
-cours
-professionnels
-ou
-vous
-ne
-savez
-pas
-comment
-ã©tudier
-de
-maniã¨re
-efficace,
-2
-prestations
-vous
-sont
-proposã©es
-:
-coaching
-apprentis
-et
-appuis
-apprentis.
+sexualitã©
 etml
 rue
 de

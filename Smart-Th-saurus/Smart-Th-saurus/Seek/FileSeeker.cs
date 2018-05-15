@@ -61,7 +61,7 @@ namespace Smart_Th_saurus
                         }
                     }
                 }
-                //Change globals variables if the current number of occurence is more that the current max
+                //Check if the user add a second word and if the page match the search
                 if (multiple)
                 {
                     if(!plus && containsPlus || plus && !containsPlus)
@@ -69,6 +69,7 @@ namespace Smart_Th_saurus
                         isValide = false;
                     }
                 }
+                //Change globals variables if the current number of occurence is more that the current max
                 if (tempFileOcc > maxOccFileNbr || isValide)
                 {
                     tempFoldOcc += foldOcc;
